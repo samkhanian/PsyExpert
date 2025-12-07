@@ -63,7 +63,12 @@ pre{background:#eee;padding:12px;border-radius:8px;overflow:auto;font-size:13px}
           <li>اگر کمال‌گرایی و حساسیت به نظم داشته باشد → «وسواسی»</li>
           <li>اگر همدلی کم و رفتار پرخطر داشته باشد → «ضد اجتماعی»</li>
         </ul>
-        <p>می‌توانید <strong><a href="#panel-run">همین حالا سیستم را اجرا کنید</a></strong> و پاسخ‌هایتان را بررسی کنید.</p>
+       <p>
+می‌توانید <strong>
+<a href="javascript:void(0)" onclick="switchToRun()">همین حالا سیستم را اجرا کنید</a>
+</strong> و پاسخ‌هایتان را بررسی کنید.
+</p>
+
       </div>
     </section>
 
@@ -100,5 +105,16 @@ document.querySelectorAll('.tab').forEach(t=>{
   });
 });
 </script>
+  function switchToRun() {
+  // فعال کردن تب اجرای سیستم
+  document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+  const runTab = document.querySelector('.tab[data-tab="run"]');
+  runTab.classList.add('active');
+  document.getElementById('panel-doc').style.display = 'none';
+  document.getElementById('panel-run').style.display = 'block';
+  // اسکرول به بخش اجرای سیستم
+  document.getElementById('panel-run').scrollIntoView({behavior:'smooth'});
+}
+
 </body>
 </html>
