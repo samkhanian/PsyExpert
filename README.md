@@ -1,5 +1,7 @@
 # MindRules — Simple Expert System for Personality Patterns
 
+[فارسی](./README.fa.md) · [Demo](https://samkhanian.github.io/PsyExpert/)
+
 **Student:** Jamal Samkhaniyan  
 **Instructor:** Dr. Roya Namiranian  
 **Course:** Expert Systems
