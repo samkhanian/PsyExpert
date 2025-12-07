@@ -34,11 +34,11 @@
           <li>اگر کمال‌گرایی و حساسیت به نظم داشته باشد → «وسواسی»</li>
           <li>اگر همدلی کم و رفتار پرخطر داشته باشد → «ضد اجتماعی»</li>
         </ul>
-        <p>
-          می‌توانید <strong>
-          <a href="javascript:void(0)" onclick="switchToRun()">همین حالا سیستم را اجرا کنید</a>
-          </strong> و پاسخ‌هایتان را بررسی کنید.
-        </p>
+       <p>
+می‌توانید <strong>
+<a href="#" id="run-link">همین حالا سیستم را اجرا کنید</a>
+</strong> و پاسخ‌هایتان را بررسی کنید.
+</p>
       </div>
     </section>
 
@@ -65,17 +65,6 @@
 <script src="rules.js"></script>
 <script src="engine.js"></script>
 <script>
-// تب‌ها
-document.querySelectorAll('.tab').forEach(t=>{
-  t.addEventListener('click',()=>{
-    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-    t.classList.add('active');
-    const tab=t.dataset.tab;
-    document.getElementById('panel-doc').style.display=tab==='doc'?'block':'none';
-    document.getElementById('panel-run').style.display=tab==='run'?'block':'none';
-  });
-});
-
 // تابع فعال‌سازی اجرای سیستم
 function switchToRun() {
   document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
@@ -85,6 +74,14 @@ function switchToRun() {
   document.getElementById('panel-run').style.display = 'block';
   document.getElementById('panel-run').scrollIntoView({behavior:'smooth'});
 }
+
+// اتصال به لینک بعد از بارگذاری DOM
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('run-link').addEventListener('click',e=>{
+    e.preventDefault(); // جلوگیری از رفتار پیشفرض لینک
+    switchToRun();
+  });
+});
 </script>
 </body>
 </html>
