@@ -20,13 +20,36 @@
     <section class="card" id="panel-doc">
       <h2><i class="bi bi-info-circle"></i> توضیح سیستم</h2>
       <div class="doc">
-        <p><strong>دانشجو:</strong> جمال سام خانیان<br><strong>استاد:</strong> دکتر رویا نمیرانیان<br><strong>درس:</strong> سیستم‌های خبره</p>
-        
-        <div class="feature"><i class="bi bi-book"></i> <strong>پایگاه دانش:</strong> مجموعه‌ای از سوالات و قواعد که الگوهای شخصیتی را توصیف می‌کند.</div>
-        <div class="feature"><i class="bi bi-gear"></i> <strong>موتور استنتاج:</strong> با زنجیره پیشرو، پاسخ‌های کاربر را بررسی می‌کند و قوانین فعال را تعیین می‌کند.</div>
-        <div class="feature"><i class="bi bi-person-lines-fill"></i> <strong>رابط کاربری:</strong> فرم تعاملی، جدول امتیازات، نمایش الگوهای فعال و خروجی JSON.</div>
-        <div class="feature"><i class="bi bi-lightbulb"></i> <strong>Explainability:</strong> علت فعال شدن هر قاعده نمایش داده می‌شود.</div>
-        
+        <p><strong>دانشجو:</strong> جمال سام خانیان<br>
+           <strong>استاد:</strong> دکتر رویا نمیرانیان<br>
+           <strong>درس:</strong> سیستم‌های خبره
+        </p>
+
+        <div class="card" style="margin-bottom:15px">
+          <h3><i class="bi bi-book"></i> پایگاه دانش</h3>
+          <div class="feature"><i class="bi bi-question-circle"></i> سوالات جمع‌آوری ویژگی‌های شخصیتی</div>
+          <div class="feature"><i class="bi bi-journal-text"></i> قواعد «اگر ... آنگاه ...» برای تشخیص گرایش‌ها</div>
+          <div class="feature"><i class="bi bi-clipboard-check"></i> هر قانون شامل شرایط و الگوهای احتمالی است</div>
+        </div>
+
+        <div class="card" style="margin-bottom:15px">
+          <h3><i class="bi bi-gear"></i> موتور استنتاج</h3>
+          <div class="feature"><i class="bi bi-arrow-right-circle"></i> زنجیره پیشرو (Forward Chaining)</div>
+          <div class="feature"><i class="bi bi-robot"></i> بررسی پاسخ‌ها و فعال کردن قواعد مرتبط</div>
+          <div class="feature"><i class="bi bi-lightbulb"></i> نمایش دلیل فعال شدن هر قاعده</div>
+        </div>
+
+        <div class="card" style="margin-bottom:15px">
+          <h3><i class="bi bi-diagram-3"></i> فرایند استنتاج</h3>
+          <div class="flow">
+            <div class="step"><i class="bi bi-question-square"></i><br>پرسیدن سوالات</div>
+            <div class="step"><i class="bi bi-pencil-square"></i><br>جمع‌آوری پاسخ‌ها</div>
+            <div class="step"><i class="bi bi-journal-check"></i><br>تطبیق قواعد</div>
+            <div class="step"><i class="bi bi-bar-chart-line"></i><br>محاسبه امتیاز</div>
+            <div class="step"><i class="bi bi-award"></i><br>نمایش نتیجه + قوانین فعال</div>
+          </div>
+        </div>
+
         <p>نمونه قواعد:</p>
         <ul>
           <li>اگر فرد تنهایی را ترجیح دهد و جداشدگی مداوم داشته باشد → «شیزوئید گونه»</li>
@@ -34,11 +57,8 @@
           <li>اگر کمال‌گرایی و حساسیت به نظم داشته باشد → «وسواسی»</li>
           <li>اگر همدلی کم و رفتار پرخطر داشته باشد → «ضد اجتماعی»</li>
         </ul>
-       <p>
-می‌توانید <strong>
-<a href="#" id="run-link">همین حالا سیستم را اجرا کنید</a>
-</strong> و پاسخ‌هایتان را بررسی کنید.
-</p>
+
+        <a href="#" id="run-link" class="btn"><i class="bi bi-play-circle"></i> همین حالا سیستم را اجرا کنید</a>
       </div>
     </section>
 
@@ -65,7 +85,16 @@
 <script src="rules.js"></script>
 <script src="engine.js"></script>
 <script>
-// تابع فعال‌سازی اجرای سیستم
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    const tab=t.dataset.tab;
+    document.getElementById('panel-doc').style.display=tab==='doc'?'block':'none';
+    document.getElementById('panel-run').style.display=tab==='run'?'block':'none';
+  });
+});
+
 function switchToRun() {
   document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
   const runTab = document.querySelector('.tab[data-tab="run"]');
@@ -75,10 +104,9 @@ function switchToRun() {
   document.getElementById('panel-run').scrollIntoView({behavior:'smooth'});
 }
 
-// اتصال به لینک بعد از بارگذاری DOM
 document.addEventListener('DOMContentLoaded',()=>{
   document.getElementById('run-link').addEventListener('click',e=>{
-    e.preventDefault(); // جلوگیری از رفتار پیشفرض لینک
+    e.preventDefault();
     switchToRun();
   });
 });
