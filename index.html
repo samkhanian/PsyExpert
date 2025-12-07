@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MindRules - سیستم خبره آموزشی</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <h1>MindRules — سیستم خبره آموزشی</h1>
+  <div class="tabs">
+    <div class="tab active" data-tab="doc">مستندات</div>
+    <div class="tab" data-tab="run">اجرای سیستم</div>
+  </div>
+
+  <div class="layout">
+    <section class="card" id="panel-doc">
+      <h2>مستندات سیستم</h2>
+      <div class="doc">
+        <p><strong>دانشجو:</strong> جمال سام خانیان<br><strong>استاد:</strong> دکتر رویا نمیرانیان<br><strong>درس:</strong> سیستم‌های خبره</p>
+        <p>این سیستم نمونه‌ای آموزشی است و ابزار تشخیص بالینی نیست.</p>
+        <ul>
+          <li>پایگاه دانش مبتنی بر قواعد</li>
+          <li>موتور استنتاج زنجیره پیشرو</li>
+          <li>رابط کاربری ساده</li>
+        </ul>
+      </div>
+    </section>
+
+    <aside class="card" id="panel-run" style="display:none">
+      <h2>اجرای سیستم</h2>
+      <form id="expert-form">
+        <div id="questions"></div>
+        <div class="buttons">
+          <button type="button" class="btn primary" id="run-btn">بررسی و اجرا</button>
+          <button type="button" class="btn ghost" id="reset-btn">بازنشانی</button>
+          <button type="button" class="btn ghost" id="copy-json">کپی JSON</button>
+        </div>
+        <div id="result-area"></div>
+        <div class="explain-area">
+          خروجی: <span id="out-summary">هیچ</span>
+          <div id="explain"></div>
+        </div>
+      </form>
+    </aside>
+  </div>
+</div>
+
+<script src="rules.js"></script>
+<script src="engine.js"></script>
+<script>
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    const tab=t.dataset.tab;
+    document.getElementById('panel-doc').style.display=tab==='doc'?'block':'none';
+    document.getElementById('panel-run').style.display=tab==='run'?'block':'none';
+  });
+});
+</script>
+</body>
+</html>
