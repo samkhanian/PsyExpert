@@ -4,12 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MindRules - سیستم خبره</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
   <h1><i class="bi bi-brain"></i> MindRules — سیستم خبره</h1>
+
+  <p style="margin-top:10px">
+    <a href="./README.fa.md" class="btn ghost"><i class="bi bi-file-earmark-text"></i> مستندات فارسی</a>
+    <a href="https://samkhanian.github.io/PsyExpert/" class="btn primary"><i class="bi bi-play-circle"></i> مشاهده دمو</a>
+  </p>
+
   <div class="tabs">
     <div class="tab active" data-tab="doc"><i class="bi bi-journal-text"></i> مستندات</div>
     <div class="tab" data-tab="run"><i class="bi bi-robot"></i> اجرای سیستم</div>
@@ -25,37 +31,57 @@
            <strong>درس:</strong> سیستم‌های خبره
         </p>
 
-        <div class="card">
+        <div class="card feature-card">
           <h3><i class="bi bi-book"></i> پایگاه دانش</h3>
           <div class="feature"><i class="bi bi-question-circle"></i> سوالات جمع‌آوری ویژگی‌های شخصیتی</div>
           <div class="feature"><i class="bi bi-journal-text"></i> قواعد «اگر ... آنگاه ...» برای تشخیص گرایش‌ها</div>
           <div class="feature"><i class="bi bi-clipboard-check"></i> هر قانون شامل شرایط و الگوهای احتمالی است</div>
         </div>
 
-        <div class="card">
+        <div class="card feature-card">
           <h3><i class="bi bi-gear"></i> موتور استنتاج</h3>
           <div class="feature"><i class="bi bi-arrow-right-circle"></i> زنجیره پیشرو (Forward Chaining)</div>
           <div class="feature"><i class="bi bi-robot"></i> بررسی پاسخ‌ها و فعال کردن قواعد مرتبط</div>
           <div class="feature"><i class="bi bi-lightbulb"></i> نمایش دلیل فعال شدن هر قاعده</div>
         </div>
 
-        <div class="card">
-          <h3><i class="bi bi-diagram-3"></i> فرایند استنتاج</h3>
+        <div class="card feature-card">
+          <h3><i class="bi bi-diagram-3"></i> فرایند مرحله‌ای (با مثال RULES واقعی)</h3>
           <div class="flow">
-            <div class="step"><i class="bi bi-question-square"></i><br>پرسیدن سوالات</div>
-            <div class="step"><i class="bi bi-pencil-square"></i><br>جمع‌آوری پاسخ‌ها</div>
-            <div class="step"><i class="bi bi-journal-check"></i><br>تطبیق قواعد</div>
-            <div class="step"><i class="bi bi-bar-chart-line"></i><br>محاسبه امتیاز</div>
-            <div class="step"><i class="bi bi-award"></i><br>نمایش نتیجه + قوانین فعال</div>
+            <div class="step">
+              <i class="bi bi-question-square"></i><br>
+              پرسیدن سوالات<br>
+              <small>مثال: "ترس از طرد شدن" یا "اجتناب از جمع"</small>
+            </div>
+            <div class="step">
+              <i class="bi bi-pencil-square"></i><br>
+              جمع‌آوری پاسخ‌ها<br>
+              <small>کاربر به هر سوال نمره 0 تا 3 می‌دهد</small>
+            </div>
+            <div class="step">
+              <i class="bi bi-journal-check"></i><br>
+              تطبیق قواعد<br>
+              <small>مثال: الگوی اجتنابی فعال می‌شود اگر <strong>fear_rejection ≥2 و avoid_people ≥2</strong></small>
+            </div>
+            <div class="step">
+              <i class="bi bi-bar-chart-line"></i><br>
+              محاسبه امتیاز<br>
+              <small>نمره‌ها جمع شده و بررسی می‌شوند تا قوانین فعال مشخص شوند</small>
+            </div>
+            <div class="step">
+              <i class="bi bi-award"></i><br>
+              نمایش نتیجه<br>
+              <small>نمایش "الگوی اجتنابی" + دلیل فعال شدن قانون: "ترس از طرد شدن و اجتناب از جمع"</small>
+            </div>
           </div>
         </div>
 
-        <p>نمونه قواعد:</p>
+        <p>نمونه قواعد واقعی در سیستم:</p>
         <ul>
-          <li>اگر فرد تنهایی را ترجیح دهد و جداشدگی مداوم داشته باشد → «شیزوئید گونه»</li>
-          <li>اگر روابط ناپایدار یا رفتار تکانشی داشته باشد → «مرزی‌گونه»</li>
-          <li>اگر کمال‌گرایی و حساسیت به نظم داشته باشد → «وسواسی»</li>
-          <li>اگر همدلی کم و رفتار پرخطر داشته باشد → «ضد اجتماعی»</li>
+          <li>الگوی اجتنابی: <strong>fear_rejection ≥2 و avoid_people ≥2</strong> → "ترس از طرد شدن و اجتناب از جمع"</li>
+          <li>الگوی مرزی: <strong>unstable_relationships ≥2 یا impulsivity ≥2</strong> → "روابط ناپایدار یا تکانش‌گری"</li>
+          <li>الگوی وسواسی: <strong>perfectionism ≥2 و order_sensitive ≥2</strong> → "کمال‌گرایی و حساسیت به نظم"</li>
+          <li>الگوی ضد اجتماعی: <strong>low_empathy ≥2 و risk_taking ≥2</strong> → "همدلی کم و رفتار پرخطر"</li>
         </ul>
 
         <a href="#" id="run-link" class="btn primary"><i class="bi bi-play-circle"></i> همین حالا سیستم را اجرا کنید</a>
